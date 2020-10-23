@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.grade.mapper.GradeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.grade.entity.Grade">
+        <id column="id" property="id" />
+        <result column="grade" property="grade" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id AS "id", grade AS "grade"
+    </sql>
+
+
+    <select id="customList" resultType="cn.stylefeng.guns.modular.grade.model.result.GradeResult" parameterType="cn.stylefeng.guns.modular.grade.model.params.GradeParam">
+        select
+        <include refid="Base_Column_List"/>
+        from grade where 1 = 1
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.grade.model.params.GradeParam">
+        select
+        <include refid="Base_Column_List"/>
+        from grade where 1 = 1
+    </select>
+
+    <select id="customPageList" resultType="cn.stylefeng.guns.modular.grade.model.result.GradeResult" parameterType="cn.stylefeng.guns.modular.grade.model.params.GradeParam">
+        select
+        <include refid="Base_Column_List"/>
+        from grade where 1 = 1
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.grade.model.params.GradeParam">
+        select
+        <include refid="Base_Column_List"/>
+        from grade where 1 = 1
+    </select>
+
+</mapper>
