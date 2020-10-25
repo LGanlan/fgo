@@ -17,12 +17,19 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
      */
     Servant.initColumn = function () {
         return [[
-            {type: 'checkbox'},
             {field: 'id', hide: true, title: '主键id'},
-            {field: 'name', sort: true, title: '姓名'},
-            {field: 'classId', sort: true, title: '职阶id'},
-            {field: 'gradeId', sort: true, title: '评分id'},
-            {field: 'isHas', sort: true, title: '是否拥有（0 无 1 有）'},
+            {field: 'name', title: '姓名'},
+            {field: 'classes', title: '职阶'},
+            {field: 'grade', title: '评分'},
+            {
+                field: 'isHas', title: '是否拥有', templet: function (data) {
+                    let isHas = "无";
+                    if (data.isHas == 1) {
+                        isHas = "有";
+                    }
+                    return isHas;
+                }
+            },
             {align: 'center', toolbar: '#tableBar', title: '操作'}
         ]];
     };
@@ -32,8 +39,10 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
      */
     Servant.search = function () {
         var queryData = {};
-
-
+        queryData.name = $("#name").val();
+        queryData.gradeId = $("#gradeId").val();
+        queryData.classId = $("#classId").val();
+        queryData.isHas = $("#isHas").val();
         table.reload(Servant.tableId, {
             where: queryData, page: {curr: 1}
         });
@@ -47,10 +56,10 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
     };
 
     /**
-    * 跳转到编辑页面
-    *
-    * @param data 点击按钮时候的行数据
-    */
+     * 跳转到编辑页面
+     *
+     * @param data 点击按钮时候的行数据
+     */
     Servant.jumpEditPage = function (data) {
         window.location.href = Feng.ctxPath + '/servant/edit?id=' + data.id
     };
@@ -104,7 +113,7 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
     // 添加按钮点击事件
     $('#btnAdd').click(function () {
 
-    Servant.jumpAddPage();
+        Servant.jumpAddPage();
 
     });
 

@@ -1,6 +1,10 @@
 package cn.stylefeng.guns.modular.servant.controller;
 
 import cn.stylefeng.guns.base.pojo.page.LayuiPageInfo;
+import cn.stylefeng.guns.modular.classes.entity.Classes;
+import cn.stylefeng.guns.modular.classes.service.ClassesService;
+import cn.stylefeng.guns.modular.grade.entity.Grade;
+import cn.stylefeng.guns.modular.grade.service.GradeService;
 import cn.stylefeng.guns.modular.servant.entity.Servant;
 import cn.stylefeng.guns.modular.servant.model.params.ServantParam;
 import cn.stylefeng.guns.modular.servant.service.ServantService;
@@ -8,8 +12,11 @@ import cn.stylefeng.roses.core.base.controller.BaseController;
 import cn.stylefeng.roses.core.reqres.response.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 
 /**
@@ -27,6 +34,12 @@ public class ServantController extends BaseController {
     @Autowired
     private ServantService servantService;
 
+    @Autowired
+    private ClassesService classesService;
+
+    @Autowired
+    private GradeService gradeService;
+
     /**
      * 跳转到主页面
      *
@@ -34,7 +47,11 @@ public class ServantController extends BaseController {
      * @Date 2020-10-23
      */
     @RequestMapping("")
-    public String index() {
+    public String index(Model model) {
+        List<Classes> classList = classesService.list();
+        List<Grade> gradeList = gradeService.list();
+        model.addAttribute("classList", classList);
+        model.addAttribute("gradeList", gradeList);
         return PREFIX + "/servant.html";
     }
 
@@ -45,7 +62,11 @@ public class ServantController extends BaseController {
      * @Date 2020-10-23
      */
     @RequestMapping("/add")
-    public String add() {
+    public String add(Model model) {
+        List<Classes> classList = classesService.list();
+        List<Grade> gradeList = gradeService.list();
+        model.addAttribute("classList", classList);
+        model.addAttribute("gradeList", gradeList);
         return PREFIX + "/servant_add.html";
     }
 
@@ -56,7 +77,11 @@ public class ServantController extends BaseController {
      * @Date 2020-10-23
      */
     @RequestMapping("/edit")
-    public String edit() {
+    public String edit(Model model) {
+        List<Classes> classList = classesService.list();
+        List<Grade> gradeList = gradeService.list();
+        model.addAttribute("classList", classList);
+        model.addAttribute("gradeList", gradeList);
         return PREFIX + "/servant_edit.html";
     }
 

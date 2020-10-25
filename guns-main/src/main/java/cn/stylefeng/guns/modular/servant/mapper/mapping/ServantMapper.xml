@@ -4,11 +4,11 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.servant.entity.Servant">
-        <id column="id" property="id" />
-        <result column="name" property="name" />
-        <result column="class_id" property="classId" />
-        <result column="grade_id" property="gradeId" />
-        <result column="is_has" property="isHas" />
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="class_id" property="classId"/>
+        <result column="grade_id" property="gradeId"/>
+        <result column="is_has" property="isHas"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
@@ -17,25 +17,51 @@
     </sql>
 
 
-    <select id="customList" resultType="cn.stylefeng.guns.modular.servant.model.result.ServantResult" parameterType="cn.stylefeng.guns.modular.servant.model.params.ServantParam">
+    <select id="customList" resultType="cn.stylefeng.guns.modular.servant.model.result.ServantResult"
+            parameterType="cn.stylefeng.guns.modular.servant.model.params.ServantParam">
         select
         <include refid="Base_Column_List"/>
         from servant where 1 = 1
     </select>
 
-    <select id="customMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.servant.model.params.ServantParam">
+    <select id="customMapList" resultType="map"
+            parameterType="cn.stylefeng.guns.modular.servant.model.params.ServantParam">
         select
         <include refid="Base_Column_List"/>
         from servant where 1 = 1
     </select>
 
-    <select id="customPageList" resultType="cn.stylefeng.guns.modular.servant.model.result.ServantResult" parameterType="cn.stylefeng.guns.modular.servant.model.params.ServantParam">
-        select
-        <include refid="Base_Column_List"/>
-        from servant where 1 = 1
+    <select id="customPageList" resultType="cn.stylefeng.guns.modular.servant.model.result.ServantResult"
+            parameterType="cn.stylefeng.guns.modular.servant.model.params.ServantParam">
+        SELECT
+        s.id AS id,
+        s.`name` AS "name",
+        c.class AS "classes",
+        g.grade AS "grade",
+        s.is_has AS "isHas"
+        FROM
+        servant s,
+        classes c,
+        grade g
+        WHERE
+        s.class_id = c.id
+        AND s.grade_id = g.id
+        <if test="paramCondition.classId != null and paramCondition.classId != ''">
+            AND s.class_id = #{paramCondition.classId}
+        </if>
+        <if test="paramCondition.gradeId != null and paramCondition.gradeId != ''">
+            AND s.grade_id = #{paramCondition.gradeId}
+        </if>
+        <if test="paramCondition.isHas != null and paramCondition.isHas != ''">
+            AND s.is_has = #{paramCondition.isHas}
+        </if>
+        <if test="paramCondition.name != null and paramCondition.name != ''">
+            AND s.NAME LIKE CONCAT("%",#{paramCondition.name},"%" )
+        </if>
     </select>
 
-    <select id="customPageMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.servant.model.params.ServantParam">
+    <select id="customPageMapList" resultType="map"
+            parameterType="cn.stylefeng.guns.modular.servant.model.params.ServantParam">
         select
         <include refid="Base_Column_List"/>
         from servant where 1 = 1

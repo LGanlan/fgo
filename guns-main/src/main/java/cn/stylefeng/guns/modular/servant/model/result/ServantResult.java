@@ -33,11 +33,13 @@ public class ServantResult implements Serializable {
      * 职阶id
      */
     private Long classId;
+    private String classes;
 
     /**
      * 评分id
      */
     private Long gradeId;
+    private String grade;
 
     /**
      * 是否拥有（0 无 1 有）
