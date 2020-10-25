@@ -17,9 +17,8 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
      */
     Classes.initColumn = function () {
         return [[
-            {type: 'checkbox'},
             {field: 'id', hide: true, title: '主键id'},
-            {field: 'class', sort: true, title: '职介'},
+            {field: 'classes', title: '职介'},
             {align: 'center', toolbar: '#tableBar', title: '操作'}
         ]];
     };

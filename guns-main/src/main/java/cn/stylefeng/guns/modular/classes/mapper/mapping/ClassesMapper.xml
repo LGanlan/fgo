@@ -10,7 +10,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id AS "id", class AS "class"
+        id AS "id", class AS "classes"
     </sql>
 
 
@@ -30,6 +30,8 @@
         select
         <include refid="Base_Column_List"/>
         from classes where 1 = 1
+        ORDER BY
+        id DESC
     </select>
 
     <select id="customPageMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.classes.model.params.ClassesParam">
