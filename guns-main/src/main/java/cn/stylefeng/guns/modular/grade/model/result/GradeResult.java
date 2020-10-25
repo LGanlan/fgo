@@ -29,4 +29,8 @@ public class GradeResult implements Serializable {
      */
     private String grade;
 
+    /**
+     * 排序
+     */
+    private Integer sort;
 }

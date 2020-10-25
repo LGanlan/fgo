@@ -17,9 +17,9 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
      */
     Grade.initColumn = function () {
         return [[
-            {type: 'checkbox'},
             {field: 'id', hide: true, title: '主键id'},
-            {field: 'grade', sort: true, title: '评分'},
+            {field: 'grade', title: '评分'},
+            {field: 'sort', title: '排序'},
             {align: 'center', toolbar: '#tableBar', title: '操作'}
         ]];
     };

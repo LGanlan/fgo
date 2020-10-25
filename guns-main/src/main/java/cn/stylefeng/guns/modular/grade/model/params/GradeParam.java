@@ -30,6 +30,11 @@ public class GradeParam implements Serializable, BaseValidatingParam {
      */
     private String grade;
 
+    /**
+     * 排序
+     */
+    private Integer sort;
+
     @Override
     public String checkParam() {
         return null;

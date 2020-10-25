@@ -32,6 +32,13 @@ public class Grade implements Serializable {
     @TableField("grade")
     private String grade;
 
+    /**
+     * 排序
+     */
+    @TableField("sort")
+    private Integer sort;
+
+
 
     public Long getId() {
         return id;
@@ -49,11 +56,20 @@ public class Grade implements Serializable {
         this.grade = grade;
     }
 
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+
     @Override
     public String toString() {
         return "Grade{" +
                 "id=" + id +
-                ", grade=" + grade +
-                "}";
+                ", grade='" + grade + '\'' +
+                ", sort=" + sort +
+                '}';
     }
 }
