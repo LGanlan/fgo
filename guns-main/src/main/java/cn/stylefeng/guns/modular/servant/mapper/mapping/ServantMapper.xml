@@ -58,6 +58,7 @@
         <if test="paramCondition.name != null and paramCondition.name != ''">
             AND s.NAME LIKE CONCAT("%",#{paramCondition.name},"%" )
         </if>
+        order by s.id desc
     </select>
 
     <select id="customPageMapList" resultType="map"
