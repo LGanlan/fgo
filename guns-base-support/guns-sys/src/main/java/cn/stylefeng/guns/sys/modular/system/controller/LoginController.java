@@ -57,12 +57,23 @@ public class LoginController extends BaseController {
     private SessionManager sessionManager;
 
     /**
+     * 跳转到首页
+     *
+     * @author Ganlan
+     * @Date 2020-11-21
+     */
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public String index() {
+        return "/website/index.html";
+    }
+
+    /**
      * 跳转到主页
      *
      * @author fengshuonan
      * @Date 2018/12/23 5:41 PM
      */
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/manger", method = RequestMethod.GET)
     public String index(Model model) {
 
         //判断用户是否登录

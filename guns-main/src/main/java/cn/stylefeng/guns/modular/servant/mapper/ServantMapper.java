@@ -12,7 +12,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author Ganlan
@@ -51,5 +51,13 @@ public interface ServantMapper extends BaseMapper<Servant> {
      * @Date 2020-10-23
      */
     Page<Map<String, Object>> customPageMapList(@Param("page") Page page, @Param("paramCondition") ServantParam paramCondition);
+
+    /**
+     * 通过class获取从者列表
+     *
+     * @author Ganlan
+     * @Date 2020-10-23
+     */
+    List<ServantResult> getServantByClass(@Param("classes") String classes);
 
 }

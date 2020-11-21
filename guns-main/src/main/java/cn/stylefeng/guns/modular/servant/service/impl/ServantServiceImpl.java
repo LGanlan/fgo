@@ -63,6 +63,11 @@ public class ServantServiceImpl extends ServiceImpl<ServantMapper, Servant> impl
         return LayuiPageFactory.createPageInfo(page);
     }
 
+    @Override
+    public List<ServantResult> getServantByClass(String classes) {
+        return this.baseMapper.getServantByClass(classes);
+    }
+
     private Serializable getKey(ServantParam param){
         return param.getId();
     }

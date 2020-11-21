@@ -158,7 +158,7 @@
             var ajax = new $ax(Feng.ctxPath + "/login", function (data) {
                 Feng.success("登录成功!");
                 index.clearTabCache();
-                window.location.href = Feng.ctxPath + "/";
+                window.location.href = Feng.ctxPath + "/manger";
             }, function (data) {
                 layer.msg("登录失败！" + data.responseJSON.message, {icon: 5, anim: 6});
             });

@@ -68,4 +68,24 @@
         from servant where 1 = 1
     </select>
 
+    <select id="getServantByClass" resultType="cn.stylefeng.guns.modular.servant.model.result.ServantResult">
+        SELECT
+        s.id AS id,
+        s.`name` AS "name",
+        c.class AS "classes",
+        g.grade AS "grade",
+        s.is_has AS "isHas"
+        FROM
+        servant s,
+        classes c,
+        grade g
+        WHERE
+        s.class_id = c.id
+        AND s.grade_id = g.id
+        <if test="classes != null and classes != ''">
+            AND c.class = #{classes}
+        </if>
+        order by g.sort asc
+    </select>
+
 </mapper>

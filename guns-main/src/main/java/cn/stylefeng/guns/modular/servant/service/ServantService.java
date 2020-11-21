@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author Ganlan
@@ -64,6 +64,14 @@ public interface ServantService extends IService<Servant> {
      * @author Ganlan
      * @Date 2020-10-23
      */
-     LayuiPageInfo findPageBySpec(ServantParam param);
+    LayuiPageInfo findPageBySpec(ServantParam param);
+
+    /**
+     * 通过class获取从者列表
+     *
+     * @author Ganlan
+     * @Date 2020-10-23
+     */
+    List<ServantResult> getServantByClass(String classes);
 
 }

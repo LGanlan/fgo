@@ -2,13 +2,11 @@ package cn.stylefeng.guns.modular.servant.model.params;
 
 import lombok.Data;
 import cn.stylefeng.roses.kernel.model.validator.BaseValidatingParam;
-import java.util.Date;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author Ganlan

@@ -61,6 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 
                 .antMatchers("/").permitAll()
+                .antMatchers("/show/**").permitAll()
 
                 //获取验证码
                 .antMatchers("/kaptcha").permitAll()
