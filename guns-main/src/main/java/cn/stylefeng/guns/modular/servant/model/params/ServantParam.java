@@ -3,6 +3,7 @@ package cn.stylefeng.guns.modular.servant.model.params;
 import lombok.Data;
 import cn.stylefeng.roses.kernel.model.validator.BaseValidatingParam;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -52,7 +53,7 @@ public class ServantParam implements Serializable, BaseValidatingParam {
     /**
      * 评分
      */
-    private String score;
+    private BigDecimal score;
 
     @Override
     public String checkParam() {

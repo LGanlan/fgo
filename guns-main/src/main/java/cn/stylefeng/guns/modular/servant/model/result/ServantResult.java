@@ -54,6 +54,6 @@ public class ServantResult implements Serializable {
     /**
      * 评分
      */
-    private String score;
+    private BigDecimal score;
 
 }

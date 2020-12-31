@@ -3,6 +3,7 @@ package cn.stylefeng.guns.modular.servant.entity;
 import com.baomidou.mybatisplus.annotation.*;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -58,7 +59,7 @@ public class Servant implements Serializable {
      * 评分
      */
     @TableField("score")
-    private String score;
+    private BigDecimal score;
 
     public Long getId() {
         return id;
@@ -108,11 +109,11 @@ public class Servant implements Serializable {
         this.updateDate = updateDate;
     }
 
-    public String getScore() {
+    public BigDecimal getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(BigDecimal score) {
         this.score = score;
     }
 
