@@ -1,14 +1,13 @@
 package cn.stylefeng.guns.modular.servant.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author Ganlan
@@ -17,12 +16,12 @@ import java.io.Serializable;
 @TableName("servant")
 public class Servant implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * 主键id
      */
-      @TableId(value = "id", type = IdType.ID_WORKER)
+    @TableId(value = "id", type = IdType.ID_WORKER)
     private Long id;
 
     /**
@@ -49,6 +48,17 @@ public class Servant implements Serializable {
     @TableField("is_has")
     private Integer isHas;
 
+    /**
+     * 修改时间
+     */
+    @TableField(value = "update_date", fill = FieldFill.INSERT)
+    private Date updateDate;
+
+    /**
+     * 评分
+     */
+    @TableField("score")
+    private String score;
 
     public Long getId() {
         return id;
@@ -90,14 +100,32 @@ public class Servant implements Serializable {
         this.isHas = isHas;
     }
 
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
+
     @Override
     public String toString() {
         return "Servant{" +
-        "id=" + id +
-        ", name=" + name +
-        ", classId=" + classId +
-        ", gradeId=" + gradeId +
-        ", isHas=" + isHas +
-        "}";
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", classId=" + classId +
+                ", gradeId=" + gradeId +
+                ", isHas=" + isHas +
+                ", updateDate=" + updateDate +
+                ", score='" + score + '\'' +
+                '}';
     }
 }

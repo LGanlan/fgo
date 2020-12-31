@@ -20,7 +20,7 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
             {field: 'id', hide: true, title: '主键id'},
             {field: 'name', title: '姓名'},
             {field: 'classes', title: '职阶'},
-            {field: 'grade', title: '评分'},
+            {field: 'score', title: '评分'},
             {
                 field: 'isHas', title: '是否拥有', templet: function (data) {
                     let isHas = "无";
@@ -30,6 +30,7 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
                     return isHas;
                 }
             },
+            {field: 'updateDate', title: '修改时间'},
             {align: 'center', toolbar: '#tableBar', title: '操作'}
         ]];
     };
@@ -43,6 +44,7 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
         queryData.gradeId = $("#gradeId").val();
         queryData.classId = $("#classId").val();
         queryData.isHas = $("#isHas").val();
+        queryData.score = $("#score").val();
         table.reload(Servant.tableId, {
             where: queryData, page: {curr: 1}
         });

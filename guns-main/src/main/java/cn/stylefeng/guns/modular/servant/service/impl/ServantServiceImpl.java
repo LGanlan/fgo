@@ -6,7 +6,7 @@ import cn.stylefeng.guns.modular.servant.entity.Servant;
 import cn.stylefeng.guns.modular.servant.mapper.ServantMapper;
 import cn.stylefeng.guns.modular.servant.model.params.ServantParam;
 import cn.stylefeng.guns.modular.servant.model.result.ServantResult;
-import  cn.stylefeng.guns.modular.servant.service.ServantService;
+import cn.stylefeng.guns.modular.servant.service.ServantService;
 import cn.stylefeng.roses.core.util.ToolUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -14,11 +14,12 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author Ganlan
@@ -28,36 +29,38 @@ import java.util.List;
 public class ServantServiceImpl extends ServiceImpl<ServantMapper, Servant> implements ServantService {
 
     @Override
-    public void add(ServantParam param){
+    public void add(ServantParam param) {
         Servant entity = getEntity(param);
+        entity.setUpdateDate(new Date());
         this.save(entity);
     }
 
     @Override
-    public void delete(ServantParam param){
+    public void delete(ServantParam param) {
         this.removeById(getKey(param));
     }
 
     @Override
-    public void update(ServantParam param){
+    public void update(ServantParam param) {
         Servant oldEntity = getOldEntity(param);
         Servant newEntity = getEntity(param);
         ToolUtil.copyProperties(newEntity, oldEntity);
+        newEntity.setUpdateDate(new Date());
         this.updateById(newEntity);
     }
 
     @Override
-    public ServantResult findBySpec(ServantParam param){
+    public ServantResult findBySpec(ServantParam param) {
         return null;
     }
 
     @Override
-    public List<ServantResult> findListBySpec(ServantParam param){
+    public List<ServantResult> findListBySpec(ServantParam param) {
         return null;
     }
 
     @Override
-    public LayuiPageInfo findPageBySpec(ServantParam param){
+    public LayuiPageInfo findPageBySpec(ServantParam param) {
         Page pageContext = getPageContext();
         IPage page = this.baseMapper.customPageList(pageContext, param);
         return LayuiPageFactory.createPageInfo(page);
@@ -68,7 +71,7 @@ public class ServantServiceImpl extends ServiceImpl<ServantMapper, Servant> impl
         return this.baseMapper.getServantByClass(classes);
     }
 
-    private Serializable getKey(ServantParam param){
+    private Serializable getKey(ServantParam param) {
         return param.getId();
     }
 

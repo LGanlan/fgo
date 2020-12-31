@@ -46,4 +46,14 @@ public class ServantResult implements Serializable {
      */
     private Integer isHas;
 
+    /**
+     * 修改时间
+     */
+    private Date updateDate;
+
+    /**
+     * 评分
+     */
+    private String score;
+
 }

@@ -52,13 +52,13 @@
         </header>
         <section>
             <table class="layui-table" lay-size="sm" style="text-align: center">
-                @var grade = "";
+                @var score = "";
                 @for(servant in servantList){
-                    @if(grade != servant.grade){
-                    @grade=servant.grade;
+                    @if(score != servant.score){
+                    @score=servant.score;
                     </tr>
                     <tr>
-                        <td>${servant.grade}</td>
+                        <td>${servant.score}</td>
                         <td>${servant.name}</td>
                     @}else{
                     <td>${servant.name}</td>

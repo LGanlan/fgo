@@ -23,12 +23,7 @@
                                 </select>
                             </div>
                             <div class="layui-inline">
-                                <select id="gradeId" name="gradeId" lay-verify="required">
-                                    <option value="">评分</option>
-                                    @for(grade in gradeList){
-                                    <option value="${grade.id}">${grade.grade}</option>
-                                    @}
-                                </select>
+                                <input id="score" name="score" placeholder="评分" type="text" class="layui-input"/>
                             </div>
                             <div class="layui-inline">
                                 <select id="isHas" name="isHas" lay-verify="required">

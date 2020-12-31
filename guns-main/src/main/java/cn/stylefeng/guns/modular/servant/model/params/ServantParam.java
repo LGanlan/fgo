@@ -3,6 +3,7 @@ package cn.stylefeng.guns.modular.servant.model.params;
 import lombok.Data;
 import cn.stylefeng.roses.kernel.model.validator.BaseValidatingParam;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -42,6 +43,16 @@ public class ServantParam implements Serializable, BaseValidatingParam {
      * 是否拥有（0 无 1 有）
      */
     private Integer isHas;
+
+    /**
+     * 修改时间
+     */
+    private Date updateDate;
+
+    /**
+     * 评分
+     */
+    private String score;
 
     @Override
     public String checkParam() {

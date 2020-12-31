@@ -13,7 +13,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id AS "id", name AS "name", class_id AS "classId", grade_id AS "gradeId", is_has AS "isHas"
+        id AS "id", name AS "name", class_id AS "classId", grade_id AS "gradeId", is_has AS "isHas", update_date AS updateDate, score AS score
     </sql>
 
 
@@ -37,15 +37,14 @@
         s.id AS id,
         s.`name` AS "name",
         c.class AS "classes",
-        g.grade AS "grade",
-        s.is_has AS "isHas"
+        s.is_has AS "isHas",
+        update_date AS updateDate,
+        score AS score
         FROM
         servant s,
-        classes c,
-        grade g
+        classes c
         WHERE
         s.class_id = c.id
-        AND s.grade_id = g.id
         <if test="paramCondition.classId != null and paramCondition.classId != ''">
             AND s.class_id = #{paramCondition.classId}
         </if>
@@ -58,7 +57,10 @@
         <if test="paramCondition.name != null and paramCondition.name != ''">
             AND s.NAME LIKE CONCAT("%",#{paramCondition.name},"%" )
         </if>
-        order by s.id desc
+        <if test="paramCondition.score != null and paramCondition.score != ''">
+            AND s.score = #{paramCondition.score}
+        </if>
+        order by s.update_date desc
     </select>
 
     <select id="customPageMapList" resultType="map"
@@ -73,19 +75,17 @@
         s.id AS id,
         s.`name` AS "name",
         c.class AS "classes",
-        g.grade AS "grade",
-        s.is_has AS "isHas"
+        s.is_has AS "isHas",
+        s.score AS "score"
         FROM
         servant s,
-        classes c,
-        grade g
+        classes c
         WHERE
         s.class_id = c.id
-        AND s.grade_id = g.id
         <if test="classes != null and classes != ''">
             AND c.class = #{classes}
         </if>
-        order by g.sort asc
+        order by s.score desc
     </select>
 
 </mapper>
